@@ -18,16 +18,16 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 public class UserController {
     private final UserService service;
     @PostMapping("/register")
-    public void register(User user) {
+    public void register(@RequestBody User user) {
         service.register(user);
     }
     @PostMapping("/login")
-    public User login(User user){
+    public User login(@RequestBody User user){
        return service.login(user);
     }
     @PostMapping("/logout")
-    public void logout(String email){
-        service.logout(email);
+    public void logout(@RequestBody User user){
+        service.logout(user.getEmail());
     }
     @GetMapping("/find-all")
     public List<User> findAll(){
