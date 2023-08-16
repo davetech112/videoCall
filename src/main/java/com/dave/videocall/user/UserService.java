@@ -26,4 +26,15 @@ public class UserService {
         cUser.setStatus("online");
         return cUser;
     }
+
+    public void logout(String email){
+        var userIndex = IntStream.range(0, USER_LIST.size()).filter(i -> USER_LIST.get(i).getEmail().equals(email))
+                .findAny()
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        USER_LIST.get(userIndex).setStatus("offline");
+    }
+
+    public List<User> findAll(){
+        return USER_LIST;
+    }
 }
