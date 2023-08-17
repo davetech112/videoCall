@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
 @CrossOrigin(origins ="*")
 @Slf4j
@@ -29,7 +29,7 @@ public class UserController {
     public void logout(@RequestBody User user){
         service.logout(user.getEmail());
     }
-    @GetMapping("/find-all")
+    @GetMapping
     public List<User> findAll(){
       return service.findAll();
     }

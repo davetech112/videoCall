@@ -16,7 +16,6 @@ public class UserService {
     }
 
     public User login(User user){
-        System.out.println(USER_LIST);
         var userIndex = IntStream.range(0, USER_LIST.size()).filter(i -> USER_LIST.get(i).getEmail().equals(user.getEmail()))
                 .findAny()
                 .orElseThrow(() -> new RuntimeException("User not found"));
